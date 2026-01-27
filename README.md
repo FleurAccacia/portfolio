@@ -1,10 +1,28 @@
-# Getting Started with Create React App
+# Mon Portfolio - React TypeScript
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Un portfolio moderne et responsive développé avec React et TypeScript, présentant mes compétences et projets de développement web.
 
-## Available Scripts
+## 🚀 Fonctionnalités
 
-In the project directory, you can run:
+- ✨ Design moderne et responsive
+- 🎨 Animations fluides avec Framer Motion
+- 📱 Compatible mobile et desktop
+- 🎯 Navigation intuitive avec React Router
+- 💌 Formulaire de contact fonctionnel
+- 🎨 Styled Components pour le styling
+- ⚡ Performance optimisée
+- 🔧 TypeScript pour la robustesse du code
+
+## 🛠️ Technologies utilisées
+
+- **React 18** - Bibliothèque UI
+- **TypeScript** - Typage statique
+- **Styled Components** - CSS-in-JS
+- **Framer Motion** - Animations
+- **React Router DOM** - Navigation
+- **Lucide React** - Icônes modernes
+
+## 📦 Installation et utilisation
 
 ### `npm start`
 
