@@ -24,41 +24,50 @@ Un portfolio moderne et responsive développé avec React et TypeScript, présen
 
 ## 📦 Installation et utilisation
 
+1. Clonez le repository :
+   ```bash
+   git clone https://github.com/FleurAccacia/portfolio.git
+   cd portfolio
+   ```
+
+2. Installez les dépendances :
+   ```bash
+   npm install
+   ```
+
+3. Lancez le serveur de développement :
+   ```bash
+   npm start
+   ```
+
+4. Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
+
+## 🎨 Personnalisation
+
+### Modifier les informations personnelles
+
+1. **Hero Section** : Modifiez `src/components/Hero/Hero.tsx`
+2. **Projets** : Éditez `src/components/Projects/Projects.tsx`
+3. **À propos** : Personnalisez `src/components/About/About.tsx`
+4. **Contact** : Configurez `src/components/Contact/Contact.tsx`
+
+## 📱 Scripts disponibles
+
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Démarre le serveur de développement et ouvre [http://localhost:3000](http://localhost:3000).
 
 ### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Lance les tests en mode interactif.
 
 ### `npm run build`
+Construit l'application pour la production dans le dossier `build`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📬 Contact
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Email : votre.email@example.com
+- LinkedIn : [FleurAccacia](https://linkedin.com/in/votre-profile)
+- GitHub : [FleurAccacia](https://github.com/FleurAccacia)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Fait avec ❤️ et React
