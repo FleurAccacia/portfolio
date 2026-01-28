@@ -33,7 +33,7 @@ const ProjectsGrid = styled.div`
 const ProjectCard = styled(motion.div)<{ theme: any }>`
   background: ${(props) => props.theme.cardBackground};
   border-radius: 12px;
-  padding: 2rem;
+  overflow: hidden;
   box-shadow: 0 4px 20px ${(props) => `${props.theme.primary}20`};
   border: 1px solid ${(props) => props.theme.border};
   transition:
@@ -45,6 +45,46 @@ const ProjectCard = styled(motion.div)<{ theme: any }>`
     transform: translateY(-5px);
     box-shadow: 0 8px 30px ${(props) => `${props.theme.primary}30`};
   }
+`;
+
+const ProjectImage = styled.div<{ theme: any }>`
+  width: 100%;
+  height: 250px;
+  background: ${(props) =>
+    `linear-gradient(135deg, ${props.theme.primary}10, ${props.theme.primaryDark}05)`};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    background: ${(props) => props.theme.backgroundSecondary};
+  }
+
+  &:hover img {
+    transform: scale(1.02);
+  }
+
+  //   /* Placeholder pour les projets sans image */
+  //   &:before {
+  //     content: "🚀";
+  //     font-size: 3rem;
+  //     opacity: 0.3;
+  //     position: absolute;
+  //     top: 50%;
+  //     left: 50%;
+  //     transform: translate(-50%, -50%);
+  //     z-index: 1;
+  //   }
+`;
+
+const ProjectContent = styled.div`
+  padding: 2rem;
 `;
 
 const ProjectTitle = styled.h3<{ theme: any }>`
@@ -103,6 +143,7 @@ interface Project {
   techStack: string[];
   githubLink: string;
   liveLink?: string;
+  image?: string;
 }
 
 const Projects: React.FC = () => {
@@ -112,31 +153,64 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "E-commerce React App",
+      title: "My portfolio",
       description:
-        "Une application e-commerce complète avec panier d'achat, authentification utilisateur, et intégration de paiement.",
-      techStack: ["React", "TypeScript", "Node.js", "MongoDB", "Stripe"],
-      githubLink: "https://github.com/votre-username/ecommerce-app",
-      liveLink: "https://votre-ecommerce.netlify.app",
+        "Mon portfolio personnel développé avec React et TypeScript, incluant un système de thème dynamique et multilingue.",
+      techStack: ["React", "TypeScript"],
+      githubLink: "https://github.com/FleurAccacia/portfolio",
+      liveLink: "",
+      image: "/projects/portfolio.png",
     },
     {
       id: 2,
-      title: "Task Manager",
+      title: "Vodoo Host App",
       description:
-        "Une application de gestion de tâches avec drag & drop, notifications en temps réel, et collaboration d'équipe.",
-      techStack: ["React", "Redux", "Socket.io", "Express", "PostgreSQL"],
-      githubLink: "https://github.com/votre-username/task-manager",
-      liveLink: "https://votre-taskmanager.vercel.app",
+        "Application mobile de gestion d'hébergement avec un accent sur la culture vodou creer pour aider les utilisateurs a trouver des hebergements et vivre une immersion totale lors des Vodun Days",
+      techStack: ["Flutter", "Dart", " Firebase", "Nest.js", "PostgreSQL"],
+      githubLink: "",
+      liveLink: "",
+      image: "/projects/vodoo host app.png",
     },
     {
       id: 3,
-      title: "Weather Dashboard",
+      title: "Application de Gestion de Mémoire",
       description:
-        "Un dashboard météo interactif avec graphiques, prévisions, et géolocalisation.",
-      techStack: ["React", "Chart.js", "OpenWeather API", "CSS3"],
-      githubLink: "https://github.com/votre-username/weather-dashboard",
-      liveLink: "https://votre-weather.netlify.app",
+        "Application web pour la gestion de mémoires académiques, permettant aux étudiants de soumettre, suivre et collaborer sur leurs projets de recherche.",
+      techStack: ["React js", "TypeScript", "Spring Boot", "API REST", "MySQL"],
+      githubLink: "https://github.com/FleurAccacia/gestion_memoires",
+      liveLink: "",
+      image: "/projects/gestion-memoire.png",
     },
+    {
+      id: 4,
+      title: "Site Web Christ Carter Studio",
+      description:
+        "Site vitrine pour Christ Carter Studio, mettant en avant leurs services .",
+      techStack: ["HTML", "CSS", "JavaScript"],
+      githubLink: "https://github.com/FleurAccacia/christCarter-website",
+      liveLink: "",
+      image: "/projects/christ studio site.png",
+    },
+    {
+      id: 5,
+      title: "Application de Gestion de Recettes",
+      description:
+        "Application web permettant aux utilisateurs de créer, organiser et partager leurs recettes culinaires préférées.",
+      techStack: ["React js", "TypeScript", "Spring Boot", "API REST","Docker", "MySQL"],
+      githubLink: "https://github.com/FleurAccacia/GestionRecettes",
+      liveLink: "",
+      image: "/projects/gestion-recette.png",
+    },
+    // {
+    //   id: 6,
+    //   title: "Blog CMS",
+    //   description:
+    //     "Un système de gestion de contenu pour blog avec éditeur Markdown, gestion des utilisateurs, et SEO optimisé.",
+    //   techStack: ["Next.js", "Prisma", "PostgreSQL", "NextAuth.js", "Tailwind"],
+    //   githubLink: "https://github.com/votre-username/blog-cms",
+    //   liveLink: "https://votre-blog.vercel.app",
+    //   image: "/projects/blog-cms.jpg",
+    // },
   ];
 
   const cardVariants = {
@@ -168,41 +242,49 @@ const Projects: React.FC = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <ProjectTitle theme={theme}>{project.title}</ProjectTitle>
-              <ProjectDescription theme={theme}>
-                {project.description}
-              </ProjectDescription>
+              <ProjectImage theme={theme}>
+                {project.image && (
+                  <img src={project.image} alt={project.title} />
+                )}
+              </ProjectImage>
 
-              <TechStack>
-                {project.techStack.map((tech, techIndex) => (
-                  <TechTag key={techIndex} theme={theme}>
-                    {tech}
-                  </TechTag>
-                ))}
-              </TechStack>
+              <ProjectContent>
+                <ProjectTitle theme={theme}>{project.title}</ProjectTitle>
+                <ProjectDescription theme={theme}>
+                  {project.description}
+                </ProjectDescription>
 
-              <ProjectLinks>
-                <ProjectLink
-                  theme={theme}
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github size={18} />
-                  {t.viewCode}
-                </ProjectLink>
-                {project.liveLink && (
+                <TechStack>
+                  {project.techStack.map((tech, techIndex) => (
+                    <TechTag key={techIndex} theme={theme}>
+                      {tech}
+                    </TechTag>
+                  ))}
+                </TechStack>
+
+                <ProjectLinks>
                   <ProjectLink
                     theme={theme}
-                    href={project.liveLink}
+                    href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <ExternalLink size={18} />
-                    {t.viewDemo}
+                    <Github size={18} />
+                    {t.viewCode}
                   </ProjectLink>
-                )}
-              </ProjectLinks>
+                  {project.liveLink && (
+                    <ProjectLink
+                      theme={theme}
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink size={18} />
+                      {t.viewDemo}
+                    </ProjectLink>
+                  )}
+                </ProjectLinks>
+              </ProjectContent>
             </ProjectCard>
           ))}
         </ProjectsGrid>
