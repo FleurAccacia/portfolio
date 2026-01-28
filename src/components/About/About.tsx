@@ -2,10 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Code, Database, Smartphone, Globe } from "lucide-react";
+import { useTheme } from "../../contexts/ThemeContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
-const AboutContainer = styled.section`
+const AboutContainer = styled.section<{ theme: any }>`
   padding: 5rem 2rem;
-  background: white;
+  background: ${(props) => props.theme.background};
+  transition: background-color 0.3s ease;
 `;
 
 const Container = styled.div`
@@ -13,12 +16,12 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-const SectionTitle = styled(motion.h2)`
+const SectionTitle = styled(motion.h2)<{ theme: any }>`
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 3rem;
-  color: #333;
+  color: ${(props) => props.theme.primary};
 `;
 
 const Content = styled.div`
@@ -36,18 +39,19 @@ const Content = styled.div`
 
 const TextContent = styled(motion.div)``;
 
-const Description = styled.p`
+const Description = styled.p<{ theme: any }>`
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #666;
+  color: ${(props) => props.theme.textSecondary};
   margin-bottom: 2rem;
 `;
 
-const ImageContainer = styled(motion.div)`
+const ImageContainer = styled(motion.div)<{ theme: any }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: ${(props) =>
+    `linear-gradient(135deg, ${props.theme.primary} 0%, ${props.theme.primaryDark} 100%)`};
   border-radius: 12px;
   padding: 3rem;
   color: white;
@@ -64,71 +68,78 @@ const SkillsGrid = styled.div`
   gap: 2rem;
 `;
 
-const SkillCard = styled(motion.div)`
-  background: #f8f9fa;
+const SkillCard = styled(motion.div)<{ theme: any }>`
+  background: ${(props) => props.theme.cardBackground};
   padding: 2rem;
   border-radius: 12px;
   text-align: center;
-  transition: transform 0.3s;
+  transition:
+    transform 0.3s,
+    background-color 0.3s ease;
+  border: 1px solid ${(props) => props.theme.border};
 
   &:hover {
     transform: translateY(-5px);
   }
 `;
 
-const SkillIcon = styled.div`
-  color: #007bff;
+const SkillIcon = styled.div<{ theme: any }>`
+  color: ${(props) => props.theme.primary};
   margin-bottom: 1rem;
   display: flex;
   justify-content: center;
 `;
 
-const SkillTitle = styled.h3`
+const SkillTitle = styled.h3<{ theme: any }>`
   font-size: 1.3rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: #333;
+  color: ${(props) => props.theme.textPrimary};
 `;
 
-const SkillDescription = styled.p`
-  color: #666;
+const SkillDescription = styled.p<{ theme: any }>`
+  color: ${(props) => props.theme.textSecondary};
   line-height: 1.6;
 `;
 
 const About: React.FC = () => {
+  const { theme } = useTheme();
+  const { t } = useLanguage();
+
   const skills = [
     {
       icon: <Code size={40} />,
-      title: "Frontend Development",
-      description: "React, TypeScript, HTML5, CSS3, Tailwind CSS",
+      title: t.frontendDev,
+      description: t.frontendDesc,
     },
     {
       icon: <Database size={40} />,
-      title: "Backend Development",
-      description: "Node.js, Express, Python, PostgreSQL, MongoDB",
+      title: t.backendDev,
+      description: t.backendDesc,
     },
     {
       icon: <Smartphone size={40} />,
-      title: "Mobile Development",
-      description: "React Native, Flutter, Progressive Web Apps",
+      title: t.mobileDev,
+      description: t.mobileDesc,
     },
     {
       icon: <Globe size={40} />,
-      title: "Web Technologies",
-      description: "RESTful APIs, GraphQL, WebSockets, AWS, Docker",
+      title: t.webTech,
+      description: t.webTechDesc,
     },
   ];
 
   return (
-    <AboutContainer>
+    <AboutContainer theme={theme}>
       <Container>
         <SectionTitle
+          theme={theme}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          À propos de moi
+          {t.aboutMe}
         </SectionTitle>
 
         <Content>
@@ -138,21 +149,12 @@ const About: React.FC = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Description>
-              Développeur passionné avec plus de 3 ans d'expérience dans la
-              création d'applications web modernes. J'aime résoudre des
-              problèmes complexes et créer des interfaces utilisateur
-              intuitives.
-            </Description>
-            <Description>
-              Mon approche combine créativité et expertise technique pour livrer
-              des solutions qui dépassent les attentes. Je reste constamment à
-              jour avec les dernières technologies et meilleures pratiques du
-              développement web.
-            </Description>
+            <Description theme={theme}>{t.aboutDescription1}</Description>
+            <Description theme={theme}>{t.aboutDescription2}</Description>
           </TextContent>
 
           <ImageContainer
+            theme={theme}
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -167,14 +169,17 @@ const About: React.FC = () => {
             {skills.map((skill, index) => (
               <SkillCard
                 key={index}
+                theme={theme}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <SkillIcon>{skill.icon}</SkillIcon>
-                <SkillTitle>{skill.title}</SkillTitle>
-                <SkillDescription>{skill.description}</SkillDescription>
+                <SkillIcon theme={theme}>{skill.icon}</SkillIcon>
+                <SkillTitle theme={theme}>{skill.title}</SkillTitle>
+                <SkillDescription theme={theme}>
+                  {skill.description}
+                </SkillDescription>
               </SkillCard>
             ))}
           </SkillsGrid>

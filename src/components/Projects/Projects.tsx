@@ -2,10 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { ExternalLink, Github } from "lucide-react";
+import { useTheme } from "../../contexts/ThemeContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
-const ProjectsContainer = styled.section`
+const ProjectsContainer = styled.section<{ theme: any }>`
   padding: 5rem 2rem;
-  background: #f8f9fa;
+  background: ${(props) => props.theme.backgroundSecondary};
+  transition: background-color 0.3s ease;
 `;
 
 const Container = styled.div`
@@ -13,12 +16,12 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-const SectionTitle = styled(motion.h2)`
+const SectionTitle = styled(motion.h2)<{ theme: any }>`
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 3rem;
-  color: #333;
+  color: ${(props) => props.theme.primary};
 `;
 
 const ProjectsGrid = styled.div`
@@ -27,30 +30,32 @@ const ProjectsGrid = styled.div`
   gap: 2rem;
 `;
 
-const ProjectCard = styled(motion.div)`
-  background: white;
+const ProjectCard = styled(motion.div)<{ theme: any }>`
+  background: ${(props) => props.theme.cardBackground};
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px ${(props) => `${props.theme.primary}20`};
+  border: 1px solid ${(props) => props.theme.border};
   transition:
     transform 0.3s,
-    box-shadow 0.3s;
+    box-shadow 0.3s,
+    background-color 0.3s ease;
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 30px ${(props) => `${props.theme.primary}30`};
   }
 `;
 
-const ProjectTitle = styled.h3`
+const ProjectTitle = styled.h3<{ theme: any }>`
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: #333;
+  color: ${(props) => props.theme.textPrimary};
 `;
 
-const ProjectDescription = styled.p`
-  color: #666;
+const ProjectDescription = styled.p<{ theme: any }>`
+  color: ${(props) => props.theme.textSecondary};
   line-height: 1.6;
   margin-bottom: 1.5rem;
 `;
@@ -62,13 +67,14 @@ const TechStack = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-const TechTag = styled.span`
-  background: #e9ecef;
-  color: #495057;
+const TechTag = styled.span<{ theme: any }>`
+  background: ${(props) => props.theme.backgroundSecondary};
+  color: ${(props) => props.theme.textSecondary};
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 500;
+  border: 1px solid ${(props) => props.theme.border};
 `;
 
 const ProjectLinks = styled.div`
@@ -76,16 +82,17 @@ const ProjectLinks = styled.div`
   gap: 1rem;
 `;
 
-const ProjectLink = styled.a`
+const ProjectLink = styled.a<{ theme: any }>`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #007bff;
+  color: ${(props) => props.theme.primary};
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.3s ease;
 
   &:hover {
-    color: #0056b3;
+    color: ${(props) => props.theme.primaryDark};
   }
 `;
 
@@ -99,6 +106,9 @@ interface Project {
 }
 
 const Projects: React.FC = () => {
+  const { theme } = useTheme();
+  const { t } = useLanguage();
+
   const projects: Project[] = [
     {
       id: 1,
@@ -135,53 +145,61 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <ProjectsContainer id="projects">
+    <ProjectsContainer theme={theme} id="projects">
       <Container>
         <SectionTitle
+          theme={theme}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          Mes Projets
+          {t.projectsTitle}
         </SectionTitle>
 
         <ProjectsGrid>
           {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
+              theme={theme}
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <ProjectTitle>{project.title}</ProjectTitle>
-              <ProjectDescription>{project.description}</ProjectDescription>
+              <ProjectTitle theme={theme}>{project.title}</ProjectTitle>
+              <ProjectDescription theme={theme}>
+                {project.description}
+              </ProjectDescription>
 
               <TechStack>
                 {project.techStack.map((tech, techIndex) => (
-                  <TechTag key={techIndex}>{tech}</TechTag>
+                  <TechTag key={techIndex} theme={theme}>
+                    {tech}
+                  </TechTag>
                 ))}
               </TechStack>
 
               <ProjectLinks>
                 <ProjectLink
+                  theme={theme}
                   href={project.githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Github size={18} />
-                  Code
+                  {t.viewCode}
                 </ProjectLink>
                 {project.liveLink && (
                   <ProjectLink
+                    theme={theme}
                     href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <ExternalLink size={18} />
-                    Demo
+                    {t.viewDemo}
                   </ProjectLink>
                 )}
               </ProjectLinks>
