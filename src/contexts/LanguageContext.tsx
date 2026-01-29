@@ -40,6 +40,19 @@ interface Translations {
   certificationsTitle: string;
   verify: string;
 
+  // Services Section
+  servicesTitle: string;
+  webDevelopment: string;
+  mobileDevelopment: string;
+  moderatorSpeaker: string;
+  socialMediaManager: string;
+  trainingMentoring: string;
+  webDevDesc: string;
+  mobileDevDesc: string;
+  moderatorDesc: string;
+  socialMediaDesc: string;
+  trainingDesc: string;
+
   // Speaking Section
   speakingTitle: string;
   slides: string;
@@ -105,6 +118,24 @@ const translations: Record<Language, Translations> = {
     certificationsTitle: "Certifications",
     verify: "Vérifier",
 
+    // Services Section
+    servicesTitle: "Mes Services",
+    webDevelopment: "Développement Web",
+    mobileDevelopment: "Développement Mobile",
+    moderatorSpeaker: "Modératrice & Speaker",
+    socialMediaManager: "Social Media Manager",
+    trainingMentoring: "Formatrice & Mentoring",
+    webDevDesc:
+      "Création d'applications web modernes et responsives utilisant les dernières technologies comme React, TypeScript et Node.js.",
+    mobileDevDesc:
+      "Développement d'applications mobiles natives et cross-platform pour iOS et Android avec React Native et Flutter.",
+    moderatorDesc:
+      "Animation d'événements tech, conférences et ateliers. Interventions sur les thèmes de la technologie, diversité et innovation.",
+    socialMediaDesc:
+      "Gestion stratégique de la présence sur les réseaux sociaux, création de contenu, développement de communautés et campagnes marketing digitales.",
+    trainingDesc:
+      "Programmes de formation technique, ateliers et mentoring individuel pour les jeunes femmes entrant dans le secteur tech.",
+
     // Speaking Section
     speakingTitle: "Speaking",
     slides: "Slides",
@@ -167,6 +198,24 @@ const translations: Record<Language, Translations> = {
     // Certifications Section
     certificationsTitle: "Certifications",
     verify: "Verify",
+
+    // Services Section
+    servicesTitle: "My Services",
+    webDevelopment: "Web Development",
+    mobileDevelopment: "Mobile Development",
+    moderatorSpeaker: "Moderator & Speaker",
+    socialMediaManager: "Social Media Manager",
+    trainingMentoring: "Training & Mentoring",
+    webDevDesc:
+      "Creation of modern and responsive web applications using the latest technologies like React, TypeScript, and Node.js.",
+    mobileDevDesc:
+      "Development of native and cross-platform mobile applications for iOS and Android using React Native and Flutter.",
+    moderatorDesc:
+      "Moderation of tech events, conferences and workshops. Speaking engagements on technology, diversity, and innovation topics.",
+    socialMediaDesc:
+      "Strategic management of social media presence, content creation, community building, and digital marketing campaigns.",
+    trainingDesc:
+      "Technical training programs, workshops, and one-on-one mentoring for young women entering the tech industry.",
 
     // Speaking Section
     speakingTitle: "Speaking",
