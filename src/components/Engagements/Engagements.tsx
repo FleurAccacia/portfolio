@@ -2,10 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Heart, Users, Calendar, MapPin, ExternalLink } from "lucide-react";
+import { useTheme } from "../../contexts/ThemeContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
-const EngagementsContainer = styled.section`
+const EngagementsContainer = styled.section<{ theme: any }>`
   padding: 5rem 2rem;
-  background: #f8f9fa;
+  background: ${(props) => props.theme.backgroundSecondary};
+  transition: background-color 0.3s ease;
 `;
 
 const Container = styled.div`
@@ -13,33 +16,79 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-const SectionTitle = styled(motion.h2)`
+const SectionTitle = styled(motion.h2)<{ theme: any }>`
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 3rem;
-  color: #333;
+  color: ${(props) => props.theme.primary};
 `;
 
 const EngagementsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
-const EngagementCard = styled(motion.div)`
-  background: white;
+const EngagementCard = styled(motion.div)<{ theme: any }>`
+  background: ${(props) => props.theme.cardBackground};
   border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  box-shadow: 0 4px 20px ${(props) => `${props.theme.primary}20`};
+  border: 1px solid ${(props) => props.theme.border};
   transition:
     transform 0.3s,
-    box-shadow 0.3s;
+    box-shadow 0.3s,
+    background-color 0.3s ease;
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 30px ${(props) => `${props.theme.primary}30`};
   }
+`;
+
+const EngagementImage = styled.div<{ theme: any }>`
+  width: 100%;
+  height: 200px;
+  background: ${(props) =>
+    `linear-gradient(135deg, ${props.theme.primary}10, ${props.theme.primaryDark}05)`};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    background: ${(props) => props.theme.backgroundSecondary};
+  }
+
+  &:hover img {
+    transform: scale(1.02);
+  }
+
+  // /* Placeholder pour les engagements sans image */
+  // &:before {
+  //   content: "🤝";
+  //   font-size: 3rem;
+  //   opacity: 0.3;
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  //   z-index: 1;
+  // }
+`;
+
+const EngagementContent = styled.div`
+  padding: 2rem;
 `;
 
 const EngagementHeader = styled.div`
@@ -49,9 +98,9 @@ const EngagementHeader = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-const EngagementIcon = styled.div`
-  color: #007bff;
-  background: #e7f3ff;
+const EngagementIcon = styled.div<{ theme: any }>`
+  color: ${(props) => props.theme.primary};
+  background: ${(props) => props.theme.backgroundSecondary};
   padding: 1rem;
   border-radius: 50%;
   display: flex;
@@ -63,20 +112,20 @@ const EngagementInfo = styled.div`
   flex: 1;
 `;
 
-const EngagementTitle = styled.h3`
+const EngagementTitle = styled.h3<{ theme: any }>`
   font-size: 1.3rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: ${(props) => props.theme.textPrimary};
 `;
 
-const OrganizationName = styled.p`
-  color: #007bff;
+const OrganizationName = styled.p<{ theme: any }>`
+  color: ${(props) => props.theme.primary};
   font-weight: 600;
 `;
 
-const EngagementDescription = styled.p`
-  color: #666;
+const EngagementDescription = styled.p<{ theme: any }>`
+  color: ${(props) => props.theme.textSecondary};
   line-height: 1.6;
   margin-bottom: 1.5rem;
 `;
@@ -88,45 +137,47 @@ const EngagementMeta = styled.div`
   margin-bottom: 1rem;
 `;
 
-const MetaItem = styled.div`
+const MetaItem = styled.div<{ theme: any }>`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #666;
+  color: ${(props) => props.theme.textSecondary};
   font-size: 0.9rem;
 `;
 
-const EngagementLink = styled.a`
+const EngagementLink = styled.a<{ theme: any }>`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #007bff;
+  color: ${(props) => props.theme.primary};
   text-decoration: none;
   font-weight: 500;
   padding-top: 1rem;
-  border-top: 1px solid #e9ecef;
+  border-top: 1px solid ${(props) => props.theme.border};
+  transition: color 0.3s ease;
 
   &:hover {
-    color: #0056b3;
+    color: ${(props) => props.theme.primaryDark};
   }
 `;
 
-const ImpactSection = styled.div`
-  background: #f8f9fa;
+const ImpactSection = styled.div<{ theme: any }>`
+  background: ${(props) => props.theme.backgroundSecondary};
   padding: 1rem;
   border-radius: 8px;
   margin-top: 1rem;
+  border: 1px solid ${(props) => props.theme.border};
 `;
 
-const ImpactTitle = styled.h4`
+const ImpactTitle = styled.h4<{ theme: any }>`
   font-size: 1rem;
   font-weight: 600;
-  color: #333;
+  color: ${(props) => props.theme.textPrimary};
   margin-bottom: 0.5rem;
 `;
 
-const ImpactText = styled.p`
-  color: #666;
+const ImpactText = styled.p<{ theme: any }>`
+  color: ${(props) => props.theme.textSecondary};
   font-size: 0.9rem;
   line-height: 1.5;
 `;
@@ -140,53 +191,59 @@ interface Engagement {
   location: string;
   impact: string;
   link?: string;
+  image?: string;
 }
 
 const Engagements: React.FC = () => {
+  const { theme } = useTheme();
+  const { t } = useLanguage();
   const engagements: Engagement[] = [
     {
       id: 1,
-      title: "Mentor Bénévole",
-      organization: "42 School",
+      title: "Coordinatrice des ambassadeurs du Togo au Sénégal",
+      organization: "Cyber 221",
       description:
-        "Accompagnement de jeunes développeurs dans leur apprentissage de la programmation, révision de code et conseils carrière.",
-      period: "2022 - Présent",
-      location: "Paris, France",
-      impact: "25+ étudiants accompagnés, 90% de réussite aux projets",
-      link: "https://42.fr/",
+        " Coordination des activités des ambassadeurs, promotion de la cybersécurité et organisation d'ateliers de sensibilisation au Togo.",
+      period: "Octobre 2024 - Présent",
+      location: "Lomé, Togo",
+      impact: " 50+ participants formés, 2 ateliers organisés",
+      link: "https://sites.google.com/view/cyber221hub/activit%C3%A9s-et-ev%C3%A8nements/programmes-cyber/programme-ambassadeur-num%C3%A9rique?authuser=0",
+      image: "/engagements/Cyber221.jpg",
     },
     {
       id: 2,
-      title: "Organisateur Communauté",
-      organization: "React Paris Meetup",
-      description:
-        "Organisation d'événements mensuels, recherche de speakers, gestion de la logistique et animation de la communauté React parisienne.",
-      period: "2021 - Présent",
-      location: "Paris, France",
-      impact: "500+ membres actifs, 24 événements organisés",
-      link: "https://www.meetup.com/fr-FR/ReactJS-Paris/",
+      title: "Social Media Manager et Responsable Amazing Talks",
+      organization: "Amazing Girls In Tech",
+      description:" Gestion des réseaux sociaux et organisation de sessions de Talks avec des experts pour promouvoir la technologie auprès des jeunes filles en Afrique.",
+      period: "2024 - Présent (Pause)",
+      location: "Remote",
+      impact: "1000+ membres actifs, 07 événements organisés en ligne",
+      link: "https://www.linkedin.com/company/amazingtechgirls/?viewAsMember=true",
+      image: "/engagements/Designs Amazing Talks .png",
     },
     {
       id: 3,
-      title: "Contributeur Open Source",
-      organization: "Projets GitHub",
+      title: "Ambassadrice",
+      organization: "Miabe Hackathon",
       description:
-        "Contributions régulières à des projets open source, correction de bugs, ajout de fonctionnalités et amélioration de la documentation.",
-      period: "2020 - Présent",
-      location: "Remote",
-      impact: "100+ PRs mergées, 15 projets contributés",
-      link: "https://github.com/FleurAccacia",
+        "Promotion de l'événement Miabe Hackathon au Togo, sensibilisation des jeunes développeurs et encouragement à la participation.",
+      period: "2025 - 2026",
+      location: "Lomé, Togo",
+      impact: " 200+ inscriptions générées, plus de 10 équipes formées",
+      link: "https://www.linkedin.com/posts/gracia-gokar_miabaezhackathon-innovation-tech-activity-7290847074739224602-IpfM?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEioKlgBIY25EZZ33ql0JxKmajsELNlyeI8",
+      image: "/engagements/MBH.jpg",
     },
     {
       id: 4,
-      title: "Jury Technique",
-      organization: "École Web Developer",
+      title: "Ambassadrice",
+      organization: "Global Ambassadors Program",
       description:
-        "Évaluation de projets étudiants, entretiens techniques et conseil pédagogique pour l'amélioration des cursus de formation.",
-      period: "2023 - Présent",
-      location: "Paris, France",
-      impact: "50+ projets évalués, amélioration du cursus React",
-      link: "https://ecole-web-developer.com/",
+        " Représentation du Togo dans le programme des ambassadeurs mondiaux , promotion des initiatives technologiques et organisation d'ateliers locaux.",
+      period: "2024-2025",
+      location: "Lomé, Togo",
+      impact: "",
+      link: "https://www.facebook.com/share/p/1NSreNaMVG/?mibextid=qi2Omg",
+      image: "/engagements/GAP.jpg",
     },
   ];
 
@@ -196,67 +253,84 @@ const Engagements: React.FC = () => {
   };
 
   return (
-    <EngagementsContainer>
+    <EngagementsContainer theme={theme}>
       <Container>
         <SectionTitle
+          theme={theme}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          Engagements
+          {t.engagementsTitle || "Engagements"}
         </SectionTitle>
 
         <EngagementsGrid>
           {engagements.map((engagement, index) => (
             <EngagementCard
               key={engagement.id}
+              theme={theme}
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <EngagementHeader>
-                <EngagementIcon>
-                  <Heart size={24} />
-                </EngagementIcon>
-                <EngagementInfo>
-                  <EngagementTitle>{engagement.title}</EngagementTitle>
-                  <OrganizationName>{engagement.organization}</OrganizationName>
-                </EngagementInfo>
-              </EngagementHeader>
+              <EngagementImage theme={theme}>
+                {engagement.image && (
+                  <img src={engagement.image} alt={engagement.title} />
+                )}
+              </EngagementImage>
 
-              <EngagementDescription>
-                {engagement.description}
-              </EngagementDescription>
+              <EngagementContent>
+                <EngagementHeader>
+                  <EngagementIcon theme={theme}>
+                    <Heart size={24} />
+                  </EngagementIcon>
+                  <EngagementInfo>
+                    <EngagementTitle theme={theme}>
+                      {engagement.title}
+                    </EngagementTitle>
+                    <OrganizationName theme={theme}>
+                      {engagement.organization}
+                    </OrganizationName>
+                  </EngagementInfo>
+                </EngagementHeader>
 
-              <EngagementMeta>
-                <MetaItem>
-                  <Calendar size={16} />
-                  {engagement.period}
-                </MetaItem>
-                <MetaItem>
-                  <MapPin size={16} />
-                  {engagement.location}
-                </MetaItem>
-              </EngagementMeta>
+                <EngagementDescription theme={theme}>
+                  {engagement.description}
+                </EngagementDescription>
 
-              <ImpactSection>
-                <ImpactTitle>Impact</ImpactTitle>
-                <ImpactText>{engagement.impact}</ImpactText>
-              </ImpactSection>
+                <EngagementMeta>
+                  <MetaItem theme={theme}>
+                    <Calendar size={16} />
+                    {engagement.period}
+                  </MetaItem>
+                  <MetaItem theme={theme}>
+                    <MapPin size={16} />
+                    {engagement.location}
+                  </MetaItem>
+                </EngagementMeta>
 
-              {engagement.link && (
-                <EngagementLink
-                  href={engagement.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink size={16} />
-                  En savoir plus
-                </EngagementLink>
-              )}
+                <ImpactSection theme={theme}>
+                  <ImpactTitle theme={theme}>
+                    {t.impact || "Impact"}
+                  </ImpactTitle>
+                  <ImpactText theme={theme}>{engagement.impact}</ImpactText>
+                </ImpactSection>
+
+                {engagement.link && (
+                  <EngagementLink
+                    theme={theme}
+                    href={engagement.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink size={16} />
+                    {t.learnMore || "En savoir plus"}
+                  </EngagementLink>
+                )}
+              </EngagementContent>
             </EngagementCard>
           ))}
         </EngagementsGrid>
