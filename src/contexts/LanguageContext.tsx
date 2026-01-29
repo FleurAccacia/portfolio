@@ -126,7 +126,7 @@ const translations: Record<Language, Translations> = {
     socialMediaManager: "Social Media Manager",
     trainingMentoring: "Formatrice & Mentoring",
     webDevDesc:
-      "Création d'applications web modernes et responsives utilisant les dernières technologies comme React, TypeScript et Node.js.",
+      "Création d'applications web modernes et responsives utilisant les dernières technologies comme React, TypeScript .",
     mobileDevDesc:
       "Développement d'applications mobiles natives et cross-platform pour iOS et Android avec React Native et Flutter.",
     moderatorDesc:
@@ -207,7 +207,7 @@ const translations: Record<Language, Translations> = {
     socialMediaManager: "Social Media Manager",
     trainingMentoring: "Training & Mentoring",
     webDevDesc:
-      "Creation of modern and responsive web applications using the latest technologies like React, TypeScript, and Node.js.",
+      "Creation of modern and responsive web applications using the latest technologies like React, TypeScript.",
     mobileDevDesc:
       "Development of native and cross-platform mobile applications for iOS and Android using React Native and Flutter.",
     moderatorDesc:
