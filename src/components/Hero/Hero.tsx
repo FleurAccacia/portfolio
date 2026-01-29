@@ -53,18 +53,18 @@ const ProfileImage = styled(motion.div)`
   }
 `;
 
-const ProfilePlaceholder = styled.div`
-  width: 80%;
-  height: 80%;
-  background: linear-gradient(135deg, #ffffff30, #ffffff15);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 2rem;
-  font-weight: bold;
-`;
+// const ProfilePlaceholder = styled.div`
+//   width: 80%;
+//   height: 80%;
+//   background: linear-gradient(135deg, #ffffff30, #ffffff15);
+//   border-radius: 50%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   color: rgba(255, 255, 255, 0.8);
+//   font-size: 2rem;
+//   font-weight: bold;
+// `;
 
 const Title = styled(motion.h1)`
   font-size: 3.5rem;
@@ -92,6 +92,8 @@ const Description = styled(motion.p)`
   line-height: 1.6;
   margin-bottom: 3rem;
   opacity: 0.8;
+  white-space: pre-line;
+  text-align: center;
 `;
 
 const SocialLinks = styled(motion.div)`

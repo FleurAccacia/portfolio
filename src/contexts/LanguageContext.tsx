@@ -91,15 +91,15 @@ const translations: Record<Language, Translations> = {
     heroTitle: "Bonjour, je suis Gracia GOKAR ",
     heroSubtitle: "Tech and Innovation Women",
     heroDescription:
-      "Passionné par la création d'expériences web modernes et performantes. J'utilise les dernières technologies pour donner vie à vos idées.",
+      "J'utilise les dernières technologies pour donner vie à vos idées.\n\n\"Tout ce que ta main trouve à faire avec ta force, fais-le car tout travail procure l'abondance, mais les paroles en l'air ne mènent qu'à la disette\"",
 
     // About Section
     aboutTitle: "À propos de moi",
     aboutMe: "À propos de moi",
     aboutDescription1:
-      "Développeur passionné avec plus de 3 ans d'expérience dans la création d'applications web modernes. J'aime résoudre des problèmes complexes et créer des interfaces utilisateur intuitives.",
+      "Je suis une women in tech diplômée d'une licence en génie logiciel, passionnée par la création de solutions numériques utiles et accessibles. À la croisée de la tech, de la communication et de l'impact social, je m'intéresse à la manière dont la technologie peut répondre à des besoins réels, notamment autour de l'éducation, de la mobilité et de l'emploi des jeunes.",
     aboutDescription2:
-      "Mon approche combine créativité et expertise technique pour livrer des solutions qui dépassent les attentes. Je reste constamment à jour avec les dernières technologies et meilleures pratiques du développement web.",
+      "En parallèle du développement, j'interviens comme speaker, modératrice et community manager sur des projets et événements tech. Curieuse, orientée terrain et portée par l'impact, je conçois et accompagne des initiatives qui font le lien entre idées, communautés et solutions concrètes.",
     frontendDev: "Frontend Development",
     backendDev: "Backend Development",
     mobileDev: "Mobile Development",
@@ -172,15 +172,15 @@ const translations: Record<Language, Translations> = {
     heroTitle: "Hello, I'm Gracia GOKAR",
     heroSubtitle: "Tech and Innovation Women",
     heroDescription:
-      "Passionate about creating modern and performant web experiences. I use the latest technologies to bring your ideas to life.",
+      'I use the latest technologies to bring your ideas to life.\n\n"Whatever your hand finds to do, do it with all your might because all hard work brings profit, but mere talk leads only to poverty \"',
 
     // About Section
     aboutTitle: "About Me",
     aboutMe: "About Me",
     aboutDescription1:
-      "Passionate developer with over 3 years of experience in creating modern web applications. I love solving complex problems and creating intuitive user interfaces.",
+      "I am a woman in tech with a degree in software engineering, passionate about creating useful and accessible digital solutions. At the intersection of tech, communication, and social impact, I am interested in how technology can meet real needs, particularly around education, mobility, and youth employment.",
     aboutDescription2:
-      "My approach combines creativity and technical expertise to deliver solutions that exceed expectations. I constantly stay up-to-date with the latest technologies and best practices in web development.",
+      "Alongside development, I work as a speaker, moderator, and community manager on tech projects and events. Curious, field-oriented, and driven by impact, I design and support initiatives that bridge ideas, communities, and concrete solutions.",
     frontendDev: "Frontend Development",
     backendDev: "Backend Development",
     mobileDev: "Mobile Development",

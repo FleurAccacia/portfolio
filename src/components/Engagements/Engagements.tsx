@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Heart, Users, Calendar, MapPin, ExternalLink } from "lucide-react";
+import { Heart, Calendar, MapPin, ExternalLink } from "lucide-react";
 import { useTheme } from "../../contexts/ThemeContext";
 import { useLanguage } from "../../contexts/LanguageContext";
 
