@@ -172,7 +172,7 @@ const translations: Record<Language, Translations> = {
     heroTitle: "Hello, I'm Gracia GOKAR",
     heroSubtitle: "Tech and Innovation Women",
     heroDescription:
-      'I use the latest technologies to bring your ideas to life.\n\n"Whatever your hand finds to do, do it with all your might because all hard work brings profit, but mere talk leads only to poverty \"',
+      'I use the latest technologies to bring your ideas to life.\n\n"Whatever your hand finds to do, do it with all your might because all hard work brings profit, but mere talk leads only to poverty "',
 
     // About Section
     aboutTitle: "About Me",
