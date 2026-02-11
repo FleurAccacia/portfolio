@@ -128,7 +128,7 @@ const translations: Record<Language, Translations> = {
     webDevDesc:
       "Création d'applications web modernes et responsives utilisant les dernières technologies comme React, TypeScript .",
     mobileDevDesc:
-      "Développement d'applications mobiles natives et cross-platform pour iOS et Android avec React Native et Flutter.",
+      "Développement d'applications mobiles Android avec Flutter.",
     moderatorDesc:
       "Animation d'événements tech, conférences et ateliers. Interventions sur les thèmes de la technologie, diversité et innovation.",
     socialMediaDesc:
@@ -209,7 +209,7 @@ const translations: Record<Language, Translations> = {
     webDevDesc:
       "Creation of modern and responsive web applications using the latest technologies like React, TypeScript.",
     mobileDevDesc:
-      "Development of native and cross-platform mobile applications for iOS and Android using React Native and Flutter.",
+      "Development mobile applications for  Android using Flutter.",
     moderatorDesc:
       "Moderation of tech events, conferences and workshops. Speaking engagements on technology, diversity, and innovation topics.",
     socialMediaDesc:
