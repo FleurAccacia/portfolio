@@ -153,16 +153,36 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
+      title: "Half-ToJob",
+      description:
+        "Plateforme de recherche de missions ponctuelles à temps partiel pour les étudiants.",
+      techStack: ["React"],
+      githubLink: "https://github.com/FleurAccacia/half-toJob",
+      liveLink: "",
+      image: "/projects/half-tojob.png",
+    },
+    {
+      id: 2,
+      title: "WhatsApp Lite+ FrontEnd",
+      description:
+        "Interface d'une application de messagerie légère développée avec Flutter, inspirée de WhatsApp.",
+      techStack: ["Flutter"],
+      githubLink: "https://github.com/FleurAccacia/WhatsAppLite",
+      liveLink: "",
+      image: "/projects/whatsapp-lite.png",
+    },
+    {
+      id: 3,
       title: "My portfolio",
       description:
         "Mon portfolio personnel développé avec React et TypeScript, incluant un système de thème dynamique et multilingue.",
       techStack: ["React", "TypeScript"],
       githubLink: "https://github.com/FleurAccacia/portfolio",
-      liveLink: "",
+      liveLink: "https://graciagokar.vercel.app/",
       image: "/projects/portfolio.png",
     },
     {
-      id: 2,
+      id: 4,
       title: "Vodoo Host App",
       description:
         "Application mobile de gestion d'hébergement avec un accent sur la culture vodou creer pour aider les utilisateurs a trouver des hebergements et vivre une immersion totale lors des Vodun Days",
@@ -172,7 +192,7 @@ const Projects: React.FC = () => {
       image: "/projects/vodoo host app.png",
     },
     {
-      id: 3,
+      id: 5,
       title: "Application de Gestion de Mémoire",
       description:
         "Application web pour la gestion de mémoires académiques, permettant aux étudiants de soumettre, suivre et collaborer sur leurs projets de recherche.",
@@ -182,7 +202,7 @@ const Projects: React.FC = () => {
       image: "/projects/gestion-memoire.png",
     },
     {
-      id: 4,
+      id: 6,
       title: "Site Web Christ Carter Studio",
       description:
         "Site vitrine pour Christ Carter Studio, mettant en avant leurs services .",
@@ -192,25 +212,22 @@ const Projects: React.FC = () => {
       image: "/projects/christ studio site.png",
     },
     {
-      id: 5,
+      id: 7,
       title: "Application de Gestion de Recettes",
       description:
         "Application web permettant aux utilisateurs de créer, organiser et partager leurs recettes culinaires préférées.",
-      techStack: ["React js", "TypeScript", "Spring Boot", "API REST","Docker", "MySQL"],
+      techStack: [
+        "React js",
+        "TypeScript",
+        "Spring Boot",
+        "API REST",
+        "Docker",
+        "MySQL",
+      ],
       githubLink: "https://github.com/FleurAccacia/GestionRecettes",
       liveLink: "",
       image: "/projects/gestion-recette.png",
     },
-    // {
-    //   id: 6,
-    //   title: "Blog CMS",
-    //   description:
-    //     "Un système de gestion de contenu pour blog avec éditeur Markdown, gestion des utilisateurs, et SEO optimisé.",
-    //   techStack: ["Next.js", "Prisma", "PostgreSQL", "NextAuth.js", "Tailwind"],
-    //   githubLink: "https://github.com/votre-username/blog-cms",
-    //   liveLink: "https://votre-blog.vercel.app",
-    //   image: "/projects/blog-cms.jpg",
-    // },
   ];
 
   const cardVariants = {
