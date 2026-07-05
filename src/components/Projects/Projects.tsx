@@ -158,7 +158,7 @@ const Projects: React.FC = () => {
         "Plateforme de recherche de missions ponctuelles à temps partiel pour les étudiants.",
       techStack: ["React"],
       githubLink: "https://github.com/FleurAccacia/half-toJob",
-      liveLink: "",
+      liveLink: "https://half-to-job.vercel.app/",
       image: "/projects/half-tojob.png",
     },
     {
